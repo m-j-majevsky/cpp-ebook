@@ -1,4 +1,3 @@
-#include <iomanip>
 #include <iostream>
 #include <vector>
 
@@ -28,7 +27,7 @@ public:
 
     // Cообщить пользователю user, какая доля существующих пользователей, 
     // не считая его самого, прочитала меньшую часть книги, чем он. 
-    double CheerUser(unsigned int user) {
+    double CheerUser(unsigned int user) const {
         const unsigned int user_progress = user_progress_[user];
         if (user_progress == 0) {
             // Если для данного пользователя пока не было ни одного события ReadProgress, 
@@ -44,13 +43,13 @@ public:
     }
 
 private:
-    static const int MAX_USER_COUNT_ = 100'000;
-    static const int MAX_PAGE_COUNT_ = 1'000;
+    static constexpr int MAX_USER_COUNT_ = 100'000;
+    static constexpr int MAX_PAGE_COUNT_ = 1'000;
 
-    // В этом векторе по индексу n храниться номер страницы, 
+    // В этом векторе по индексу n хранится номер страницы, 
     // до которой дочитал пользователь id, равным n. 
     vector<unsigned int> user_progress_;
-    // А в этом - по индексу m храниться количество пользователей, 
+    // А в этом - по индексу m хранится количество пользователей, 
     // дочитавших как минимум до страницы m.
     vector<unsigned int> book_progress_bar_;
 
